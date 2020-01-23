@@ -15,7 +15,7 @@ function getWorkHours()
 {
 	case $1 in
 		$EMPLOYEE_WORKING_PARTTIME)
-		 empHrs=4
+		empHrs=4
       ;;
       $EMPLOYEE_WORKING_FULLTIME)
       empHrs=8
@@ -23,16 +23,24 @@ function getWorkHours()
       *)
       empHrs=0
       ;;
-  
+
  	esac
 echo $empHrs
+}
+
+function dailyWage()
+{
+	local empHrs=$1
+	wage=$(($empHrs*$WAGE_PER_HOUR))
+	echo $wage
 }
 while [[ $totalEmployeeHrs -lt $MAX_WORKING_HOURS_OF_EMPLOYEE &&  $totalEmployeeDays -lt $WORKING_DAYS_PER_MONTH ]]
 do
 	((totalEmployeeDays++))
 	empHrs="$( getWorkHours $((RANDOM%3)) )"
-	totalEmployeeHrs=$(($totalEmployeeHrs+$empHrs))
+	totalEmployeeHrs=$(($totalEmployeeHrs + $empHrs))
+	empDailyWage[$totalEmployeeDays]="$( dailyWage $empHrs )"
 done
-TotalSalery=$(($totalEmployeeHrs*$WAGE_PER_HOUR))
-
+TotalSalery="$( dailyWage $totalEmployeeHrs )"
+echo "Daily Wage " ${empDailyWage[@]}
 
