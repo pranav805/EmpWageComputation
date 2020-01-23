@@ -42,5 +42,6 @@ do
 	empDailyWage[$totalEmployeeDays]="$( dailyWage $empHrs )"
 done
 TotalSalery="$( dailyWage $totalEmployeeHrs )"
-echo "Daily Wage " ${empDailyWage[@]}
+echo "Daily Wage: " ${empDailyWage[@]}
+echo "Day: " ${!empDailyWage[@]}
 
