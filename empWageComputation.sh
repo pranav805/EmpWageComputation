@@ -1,10 +1,10 @@
 #!/bin/bash -x
 
 echo "welcome to Employee Wage Computation"
-isPresent=1
+IS_PRESENT=1
 WAGE_PER_HOUR=20
 Random=$((RANDOM%2))
-if [ $isPresent -eq $Random ]
+if [ $IS_PRESENT -eq $Random ]
 then
 	echo "Employee is Present"
 	fullDayHour=8
