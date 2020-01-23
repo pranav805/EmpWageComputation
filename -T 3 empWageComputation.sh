@@ -7,5 +7,5 @@ if [ $isPresent -eq $Random ]
 then
 	echo "Employee is Present"
 else
-	echo "Employee is Absent"
+	"Employee is Absent"
 fi
