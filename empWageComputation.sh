@@ -1,15 +1,17 @@
 #!/bin/bash -x
-
 echo "welcome to Employee Wage Computation"
-IS_PRESENT=1
+EMPLOYEE_WORKING_PARTTIME=1
+EMPLOYEE_WORKING_FULLTIME=2
 WAGE_PER_HOUR=20
-Random=$((RANDOM%2))
-if [ $IS_PRESENT -eq $Random ]
+RandomCheck=$((RANDOM%3))
+if [ $RandomCheck -eq $EMPLOYEE_WORKING_PARTTIME ]
 then
-	echo "Employee is Present"
-	fullDayHour=8
-	DailyWage=$(($WAGE_PER_HOUR * $fullDayHour))
+	empHrs=4
+elif [ $RandomCheck -eq $EMPLOYEE_WORKING_FULLTIME ]
+then 
+
+	empHrs=8
 else
-	echo "Employee is Absent"
-	DailyWage=0
+	empHrs=0
 fi
+EmpWage=$(($WAGE_PER_HOUR * $empHrs))
