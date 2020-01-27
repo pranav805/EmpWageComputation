@@ -15,14 +15,14 @@ function getWorkHours()
 {
 	case $1 in
 		$EMPLOYEE_WORKING_PARTTIME)
-		empHrs=4
-      ;;
+			empHrs=4
+      	;;
       $EMPLOYEE_WORKING_FULLTIME)
-      empHrs=8
-      ;;
+      	empHrs=8
+      	;;
       *)
-      empHrs=0
-      ;;
+      	empHrs=0
+      	;;
 	esac
 echo $empHrs
 }
