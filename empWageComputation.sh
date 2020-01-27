@@ -15,16 +15,15 @@ function getWorkHours()
 {
 	case $1 in
 		$EMPLOYEE_WORKING_PARTTIME)
-		empHrs=4
-      ;;
-      $EMPLOYEE_WORKING_FULLTIME)
-      empHrs=8
-      ;;
-      *)
-      empHrs=0
-      ;;
-
- 	esac
+			empHrs=4
+			;;
+		$EMPLOYEE_WORKING_FULLTIME)
+			empHrs=8
+			;;
+		*)
+			empHrs=0
+			;;
+	esac
 echo $empHrs
 }
 
@@ -34,6 +33,7 @@ function dailyWage()
 	wage=$(($empHrs*$WAGE_PER_HOUR))
 	echo $wage
 }
+
 while [[ $totalEmployeeHrs -lt $MAX_WORKING_HOURS_OF_EMPLOYEE &&  $totalEmployeeDays -lt $WORKING_DAYS_PER_MONTH ]]
 do
 	((totalEmployeeDays++))
@@ -41,6 +41,7 @@ do
 	totalEmployeeHrs=$(($totalEmployeeHrs + $empHrs))
 	empDailyWage[$totalEmployeeDays]="$( dailyWage $empHrs )"
 done
+
 TotalSalery="$( dailyWage $totalEmployeeHrs )"
 echo "Daily Wage: " ${empDailyWage[@]}
 echo "Day: " ${!empDailyWage[@]}
